@@ -9,6 +9,7 @@ Consider a 2D binary image with pixel values $x_i \in \{-1,1\}$. Now consider ha
 </center>
 
 Assume that we use $\bar{X}$ to show the pixels of the original image, and $\bar{Y}$ to show the pixels of the noisy image. Based on the MRF shown above, We can define the following energy function for this problem:
+
 $$
 E(\bar{X}=x, \bar{Y}=y)= \alpha \sum_ix_i - \beta\sum_{i,j}x_ix_j - \gamma \sum_i x_iy_i
 $$
