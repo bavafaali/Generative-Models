@@ -4,7 +4,9 @@
 
 - Trains a neural network with the score matching function below:
 
-  ![Equation](https://latex.codecogs.com/png.latex?\mathcal{L}(\theta)%20=%20\mathbb{E}_{\mathbf{x}%20\sim%20p(\mathbf{x})}%20\left[%20\frac{1}{2}%20\left\lVert%20\mathbf{s}_\theta(\mathbf{x})%20\right\rVert^2%20+%20\mathrm{tr}%20\left(%20\nabla_\mathbf{x}%20\mathbf{s}_\theta(\mathbf{x})%20\right)%20\right])
+$$
+\mathcal{L}(\theta) = \mathbb{E}_{\mathbf{x} \sim p(\mathbf{x})} \left[ \frac{1}{2} \left\lVert \mathbf{s}_\theta(\mathbf{x}) \right\rVert^2 + \mathrm{tr} \left( \nabla_\mathbf{x} \mathbf{s}_\theta(\mathbf{x}) \right) \right]
+$$
 
 - Then generates samples using Langevin Dynamics:
 
