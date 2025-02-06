@@ -1,62 +1,49 @@
 ### Score Matching
 
-Highlights:
 ## Part I
+
 - Trains a neural network with the score matching function below:
 
-$$
-\mathcal{L}(\theta) = \mathbb{E}_{\mathbf{x} \sim p(\mathbf{x})} \left[ \frac{1}{2} \left\lVert \mathbf{s}_\theta(\mathbf{x}) \right\rVert^2 + \mathrm{tr} \left( \nabla_\mathbf{x} \mathbf{s}_\theta(\mathbf{x}) \right) \right]
-$$
+  ![Equation](https://latex.codecogs.com/png.latex?\mathcal{L}(\theta)%20=%20\mathbb{E}_{\mathbf{x}%20\sim%20p(\mathbf{x})}%20\left[%20\frac{1}{2}%20\left\lVert%20\mathbf{s}_\theta(\mathbf{x})%20\right\rVert^2%20+%20\mathrm{tr}%20\left(%20\nabla_\mathbf{x}%20\mathbf{s}_\theta(\mathbf{x})%20\right)%20\right])
 
-- Then generates sample using Langevin Dynamics:
+- Then generates samples using Langevin Dynamics:
 
-$$
-\mathbf{x}_{i + 1} = \mathbf{x}_i + \varepsilon \nabla_\mathbf{x}\mathrm{log}\ p(\mathbf{x}) + \sqrt{2\varepsilon} \mathbf{z}_i 
-$$
+  ![Equation](https://latex.codecogs.com/png.latex?\mathbf{x}_{i%20+%201}%20=%20\mathbf{x}_i%20+%20\varepsilon%20\nabla_\mathbf{x}\mathrm{log}%20p(\mathbf{x})%20+%20\sqrt{2\varepsilon}%20\mathbf{z}_i)
 
-$$
-where \quad \mathbf{z}_i\sim\mathcal{N}(\mathbf{0}, \mathbf{I})
-$$
+  ![Equation](https://latex.codecogs.com/png.latex?\mathbf{z}_i\sim\mathcal{N}(\mathbf{0},\mathbf{I}))
+
 - Figure below shows the original samples and generated samples:
 
 | Original Samples | Generated Samples |
-|---------------------|---------------------|
+|-----------------|-----------------|
 | <img src="assets/swiss.png" width="300"> | <img src="assets/langev.png" width="300"> |
 
-- It is evident that generated samples are not equally distributed and some parts are more dense. Furthermore, calculation of Jacobian matrix is expensive at higher dimensions.
+- It is evident that generated samples are not equally distributed and some parts are more dense. Furthermore, calculation of the Jacobian matrix is expensive at higher dimensions.
+
 ## Part II
+
 - Trains a neural network with the denoising score matching function below:
 
-$$
-\begin{align*}
+  ![Equation](https://latex.codecogs.com/png.latex?\begin{align*}%20\mathcal{L}(\theta)%20&=%20\frac{1}{L}\sum_{i=1}^{L}{λ(σ_i)}\mathbb{E}_{\mathbf{x}\sim%20p(\mathbf{x}),%20\mathbf{\tilde{x}}\sim%20q_{σ_i}(\mathbf{\tilde{x}|x})}\left[\frac{1}{2}%20\left\lVert\mathbf{s_\theta}(\mathbf{\tilde{x},%20σ_i})%20-%20\nabla_\mathbf{\tilde{x}}%20\mathbf{log%20q_{σ_i}}(\mathbf{\tilde{x}|x})\right\rVert^2\right]%20\\%20&=\frac{1}{L}\sum_{i=1}^{L}\mathbb{E}_{\mathbf{x}\sim%20p(\mathbf{x}),%20\mathbf{z}\sim\mathcal{N}(\mathbf{0},\mathbf{I})}\left[\frac{1}{2}%20\left\lVert\mathbf{\sigma_i%20s_\theta}(\mathbf{x+σ_iz,%20σ_i})+%20z\right\rVert^2\right]%20+%20const.%20\end{align*})
 
-\mathcal{L}(\theta) &= \frac{1}{L}\sum_{i=1}^{L}{λ(σ_i)}\mathbb{E}_{\mathbf{x}\sim p(\mathbf{x}), \mathbf{\tilde{x}}\sim q_{σ_i}(\mathbf{\tilde{x}|x})}\left[\frac{1}{2} \left\lVert\mathbf{s_\theta}(\mathbf{\tilde{x}, σ_i}) - \nabla_\mathbf{\tilde{x}} \mathbf{log q_{σ_i}}(\mathbf{\tilde{x}|x})\right\rVert^2\right] \\
-&=\frac{1}{L}\sum_{i=1}^{L}\mathbb{E}_{\mathbf{x}\sim p(\mathbf{x}), \mathbf{z}\sim\mathcal{N}(\mathbf{0}, \mathbf{I})}\left[\frac{1}{2} \left\lVert\mathbf{\sigma_i s_\theta}(\mathbf{x+σ_iz, σ_i})+ z\right\rVert^2\right] + const.
+- The neural network takes one additional input for the noise in \(t_i\).
 
-\end{align*}
-$$
+- Then generates samples using Annealed Langevin Dynamics:
 
-- The neural network takes one additional input for the noise in $t_i$
-- Then generates sample using Annealed Langevin Dynamics:
+  ![Equation](https://latex.codecogs.com/png.latex?\mathbf{x}_{i%20+%201}%20=%20\mathbf{x}_i%20+%20\frac{α_i}{2}\mathbf{s_\theta}(\mathbf{x+σ_iz,%20σ_i})%20+%20\sqrt{\alpha_i}\mathbf{z}_i)
 
-$$
-\begin{equation*}
-\mathbf{x}_{i + 1} = \mathbf{x}_i + \frac{α_i}{2}\mathbf{s_\theta}(\mathbf{x+σ_iz, σ_i}) + \sqrt{\alpha_i}\mathbf{z}_i
-\end{equation*}
-$$
-$$
-where \quad \mathbf{z}_i\sim\mathcal{N}(\mathbf{0}, \ \mathbf{I}), \mathbf{α_i=ϵ.\frac{σ_i}{σ_L}}
-$$
+  ![Equation](https://latex.codecogs.com/png.latex?\mathbf{z}_i\sim\mathcal{N}(\mathbf{0},\mathbf{I}),\quad\mathbf{α_i=ϵ.\frac{σ_i}{σ_L}})
 
 - Figure below shows the original samples and generated samples:
 
 | Original Samples | Generated Samples |
-|---------------------|---------------------|
+|-----------------|-----------------|
 | <img src="assets/swiss.png" width="300"> | <img src="assets/annealed_langevin.png" width="300"> |
+
 - Figure below shows a comparison of the generated samples using Langevin Dynamics and Annealed Langevin Dynamics:
 
 | Langevin Dynamics | Annealed Langevin Dynamics |
-|---------------------|---------------------|
+|-------------------|---------------------------|
 | <img src="assets/langev.png" width="300"> | <img src="assets/annealed_langevin.png" width="300"> |
 
-- It can be seen that generated samples using Annealed Langevin Dynamics has more proportionate distribution.
+- It can be seen that generated samples using Annealed Langevin Dynamics have a more proportionate distribution.
