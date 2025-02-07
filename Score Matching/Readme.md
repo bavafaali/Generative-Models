@@ -4,9 +4,9 @@
 
 - Trains a neural network with the score matching function below:
 
-\[
+```math
 \mathcal{L}(\theta) = \mathbb{E}_{\mathbf{x} \sim p(\mathbf{x})} \left[ \frac{1}{2} \left\lVert \mathbf{s}_\theta(\mathbf{x}) \right\rVert^2 + \mathrm{tr} \left( \nabla_\mathbf{x} \mathbf{s}_\theta(\mathbf{x}) \right) \right]
-\]
+```
 
 
 - Then generates samples using Langevin Dynamics:
