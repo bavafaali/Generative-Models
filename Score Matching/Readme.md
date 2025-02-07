@@ -11,10 +11,13 @@
 
 - Then generates samples using Langevin Dynamics:
 
-  ![Equation](https://latex.codecogs.com/png.latex?\mathbf{x}_{i%20+%201}%20=%20\mathbf{x}_i%20+%20\varepsilon%20\nabla_\mathbf{x}\mathrm{log}%20p(\mathbf{x})%20+%20\sqrt{2\varepsilon}%20\mathbf{z}_i)
+```math
+\mathbf{x}_{i + 1} = \mathbf{x}_i + \varepsilon \nabla_\mathbf{x}\mathrm{log}\ p(\mathbf{x}) + \sqrt{2\varepsilon} \mathbf{z}_i 
+```
 
-  ![Equation](https://latex.codecogs.com/png.latex?\mathbf{z}_i\sim\mathcal{N}(\mathbf{0},\mathbf{I}))
-
+```math
+where \quad \mathbf{z}_i\sim\mathcal{N}(\mathbf{0}, \mathbf{I})
+```
 - Figure below shows the original samples and generated samples:
 
 | Original Samples | Generated Samples |
