@@ -1,6 +1,7 @@
 ## Score Matching
 
 ### Part I
+--- 
 
 - Trains a neural network with the score matching function below:
 
