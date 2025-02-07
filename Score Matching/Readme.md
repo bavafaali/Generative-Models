@@ -1,6 +1,6 @@
-### Score Matching
+## Score Matching
 
-## Part I
+### Part I
 
 - Trains a neural network with the score matching function below:
 
@@ -26,7 +26,7 @@ where \quad \mathbf{z}_i\sim\mathcal{N}(\mathbf{0}, \mathbf{I})
 
 - It is evident that generated samples are not equally distributed and some parts are more dense. Furthermore, calculation of the Jacobian matrix is expensive at higher dimensions.
 
-## Part II
+### Part II
 - Trains a neural network with the denoising score matching function below:
 
 ```math
