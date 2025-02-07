@@ -1,4 +1,4 @@
-### Image denoising using Markov Random Field (MRF) and energy function
+## Image denoising using Markov Random Field (MRF) and energy function
 
 We know that for an image nearby pixels have close intensity values. We can leverage this relationship to reduce the noise in the image. Specifically, noise can change a pixel's intensity significantly, compared to it's neighbors, but by analyzing the relationship between neighboring pixels, this noise can be balanced. 
 
