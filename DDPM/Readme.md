@@ -11,7 +11,7 @@ q(\mathbf{x}_t \vert \mathbf{x}_{t-1}) = \mathcal{N}(\mathbf{x}_t; \sqrt{1 - \be
 q(\mathbf{x}_{1:T} \vert \mathbf{x}_0) = \prod^T_{t=1} q(\mathbf{x}_t \vert \mathbf{x}_{t-1})
 ```
 
-| Step-by-Step | 
+| Forward process (Step-by-Step) | 
 |---------------------|
 | <img src="assets/step_step.png" width="600"> |
 
@@ -22,7 +22,7 @@ q(\mathbf{x}_t \vert \mathbf{x}_0) = \mathcal{N}(\mathbf{x}_t; \sqrt{\bar{\alpha
 ```math
  \ where: \bar{\alpha}_t = \prod_{i=1}^T \alpha_i, \  \alpha_t = 1- \beta_t
 ```
-| All at once | 
+| Forward process (All at once) | 
 |---------------------|
 | <img src="assets/step_step.png" width="600"> |
 
