@@ -4,9 +4,9 @@ We know that for an image nearby pixels have close intensity values. We can leve
 
 Consider a 2D binary image with pixel values $x_i \in$ {-1,1}. Now consider having a noisy version of the same image with pixels $y_i$ that each pixel takes different value than $x_i$ with the probability of 0.1. Assuming that in the original image, pixels with a shared edge (neighbors) have related values, and that each noisy pixel is solely a function of its corresponding original pixel, we can represent this problem using the following Markov Random Field (MRF):
 
-<center>
-  <img src="assets/MRF.png" alt="Alt text" width=250>
-</center>
+| MRF model of pixels | 
+|---------------------|
+| <img src="assets/MRF.png" width="200"> |
 
 Assume that we use $\bar{X}$ to show the pixels of the original image, and $\bar{Y}$ to show the pixels of the noisy image. Based on the MRF shown above, We can define the following energy function for this problem:
 
@@ -32,7 +32,6 @@ The expression $-\alpha x_i$:
 ---
 The result of denoising by minimizing the energy function is depicted below:
 
-
-<center>
-  <img src="assets/output.png" alt="Alt text" width=500>
-</center>
+| Original and denoised image | 
+|---------------------|
+| <img src="assets/output.png" width="500"> |
