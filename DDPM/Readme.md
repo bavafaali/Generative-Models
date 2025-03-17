@@ -1,5 +1,6 @@
 ## Denoising Diffusion Probabilistic Models (DDPM)
 Link to the paper:  https://arxiv.org/abs/2006.11239
+
 Highlights:
 ### Part I: Diffusion Models and Latent Diffusion
 
