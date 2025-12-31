@@ -12,9 +12,9 @@ q(\mathbf{x}_t \vert \mathbf{x}_{t-1}) = \mathcal{N}(\mathbf{x}_t; \sqrt{1 - \be
 q(\mathbf{x}_{1:T} \vert \mathbf{x}_0) = \prod^T_{t=1} q(\mathbf{x}_t \vert \mathbf{x}_{t-1})
 ```
 
-| Forward process (Step-by-Step) | 
-|---------------------|
-| <img src="assets/step_step.png" width="600"> |
+| Forward process (Step-by-Step) |
+|-------------------------------|
+| <p align="center"><img src="assets/step_step.png" width="600"></p> |
 
 - To train the neural network model at different time steps easily, we need to be able to apply all noise at once:
 ```math
