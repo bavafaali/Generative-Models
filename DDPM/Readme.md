@@ -20,9 +20,10 @@ q(\mathbf{x}_{1:T} \vert \mathbf{x}_0) = \prod^T_{t=1} q(\mathbf{x}_t \vert \mat
 ```math
 q(\mathbf{x}_t \vert \mathbf{x}_0) = \mathcal{N}(\mathbf{x}_t; \sqrt{\bar{\alpha}_t} \mathbf{x}_0, (1 - \bar{\alpha}_t)\mathbf{I})
 ```
-```math
+$$
  \ where: \bar{\alpha}_t = \prod_{i=1}^T \alpha_i, \  \alpha_t = 1- \beta_t
-```
+$$
+
 | Forward process (All at once) | 
 |---------------------|
 | <img src="assets/step_step.png" width="600"> |
